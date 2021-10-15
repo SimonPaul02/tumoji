@@ -25,7 +25,7 @@ class SongLyrics():
                 # create helper list to put title and lyrics together into list_str
                 self.list_helper.append(reduced_tracks["title"])
                 # TODO How to get the browseId out of the songs?
-                self.list_helper.append(self.get_lyrics("OLAK5uy_kgT2E4HCtT2HUSW9lqlXwHdeF81Y6odwo"))
+                self.list_helper.append(self.get_lyrics(browseId="OduynbTk_c"))
                 # putting together
                 list_str.append(self.list_helper)
         return list_str
