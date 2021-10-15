@@ -85,5 +85,5 @@ if __name__ == '__main__':
    # main()
    lyrics = songLyrics.SongLyrics()
 
-   dict = lyrics.get_lyrics_of_songs()
+   song_data_set = lyrics.get_lyrics_of_songs()
    print("done")
