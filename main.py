@@ -1,6 +1,7 @@
 import nltk
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
+from nltk.tokenize import RegexpTokenizer
 
 
 # Sentiment Analysis
@@ -29,16 +30,19 @@ and the home of the brave?'''
 
     stopwords = nltk.corpus.stopwords.words("english")
     tokens = nltk.word_tokenize(lyrics)
+
     print("tokens: ")
     print(tokens)
     lyricsWithoutSW = [w for w in tokens if not w.lower() in stopwords]
+    lyricsWithoutSW = [w for w in lyricsWithoutSW if w.isalpha()]
+
     print("lyrics Without stop words: ")
     print(lyricsWithoutSW)
     fdist = FreqDist(lyricsWithoutSW)
     print("How many times each word")
     print(fdist.keys())
-    print( fdist.values())
-    print(" most words")
+    print(fdist.values())
+    print("most words")
     print(fdist.tabulate(10))
 
 
