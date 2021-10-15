@@ -24,6 +24,8 @@ and the home of the brave?'''
     fdist = FreqDist(tokens)
     print(fdist.keys())
     print(fdist.values())
+    print(fdist['and'])
+    print(fdist.most_common(20))
 
 
 if __name__ == '__main__':
