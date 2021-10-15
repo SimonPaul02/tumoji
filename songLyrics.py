@@ -28,8 +28,11 @@ class SongLyrics():
             author = track["artists"][0]
             author = list(author.items())[0][1]
             index = title.find('(')
+            if index == -1:
+                index = title.find("[")
+
             lyrics = []
-            if (index > 0):
+            if index > 0:
                 lyrics = self.get_lyrics_from_genius(title[0:index], author)
             else:
                 lyrics = self.get_lyrics_from_genius(title, author)
