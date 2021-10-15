@@ -34,10 +34,11 @@ class SongLyrics():
                     lyrics = self.get_lyrics_from_genius(title[0:index], author)
                 else:
                     lyrics = self.get_lyrics_from_genius(title, author)
-                list_helper.append(author)
-                list_helper.append(title)
-                list_helper.append(lyrics)
-                # putting together
-                self.final_list.append(list_helper)
+                if(lyrics != None):
+                    list_helper.append(author)
+                    list_helper.append(title)
+                    list_helper.append(lyrics)
+                    # putting together
+                    self.final_list.append(list_helper)
 
         return self.final_list
