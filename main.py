@@ -2,7 +2,7 @@ import nltk
 import songLyrics
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
-from nltk.tokenize import RegexpTokenizer
+from nltk.corpus import wordnet
 
 
 # Sentiment Analysis
@@ -12,42 +12,77 @@ def is_positive(lyrics: str) -> bool:
 
 # Main
 def main():
-    lyrics = '''O! say can you see
-by the dawn’s early light,
-What so proudly we hailed
-at the twilight’s last gleaming,
-Whose broad stripes and bright stars
-through the perilous fight,
-O’er the ramparts we watched,
-were so gallantly streaming?
-And the rockets’ red glare,
-the bombs bursting in air,
-Gave proof through the night
-that our flag was still there;
-O! say does that star-spangled
-banner yet wave,
-O’er the land of the free
-and the home of the brave?'''
+    synonyms = []
+
+    for syn in wordnet.synsets("love"):
+        for l in syn.lemmas():
+            synonyms.append(l.name())
+
+    print(set(synonyms))
+
+    lyrics = '''I do the same thing I told you that I never would
+I told you I'd change, even when I knew I never could
+Know that I can't find nobody else as good as you
+I need you to stay, need you to stay, hey (oh)
+I get drunk, wake up, I'm wasted still
+I realize the time that I wasted here
+I feel like you can't feel the way I feel
+Oh, I'll be fucked up if you can't be right here
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+Oh, I'll be fucked up if you can't be right here
+I do the same thing I told you that I never would
+I told you I'd change, even when I knew I never could
+Know that I can't find nobody else as good as you
+I need you to stay, need you to stay, hey
+I do the same thing I told you that I never would
+I told you I'd change even when I knew I never could
+Know that I can't find nobody else as good as you
+I need you to stay, need you to stay, hey
+When I'm away from you, I miss your touch (ooh-ooh)
+You're the reason I believe in love
+It's been difficult for me to trust (ooh-ooh)
+And I'm afraid that I'ma fuck it up
+Ain't no way that I can leave you stranded
+'Cause you ain't ever left me empty-handed
+And you know that I know that I can't live without you
+So, baby, stay
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+Oh-oh-oh-whoa (oh-oh-whoa, oh-oh-whoa)
+I'll be fucked up if you can't be right here
+I do the same thing I told you that I never would
+I told you I'd change, even when I knew I never could
+Know that I can't find nobody else as good as you
+I need you to stay, need you to stay, hey
+I do the same thing I told you that I never would
+I told you I'd change even when I knew I never could
+Know that I can't find nobody else as good as you
+I need you to stay, need you to stay, hey
+Oh-oh-oh
+I need you to stay, need you to stay, hey'''
 
     stopwords = nltk.corpus.stopwords.words("english")
     tokens = nltk.word_tokenize(lyrics)
 
     print("tokens: ")
     print(tokens)
-    lyricsWithoutSW = [w for w in tokens if not w.lower() in stopwords]
-    lyricsWithoutSW = [w for w in lyricsWithoutSW if w.isalpha()]
+    lyrics_without_sw = [w for w in tokens if not w.lower() in stopwords]
+    lyrics_without_punct = [w for w in lyrics_without_sw if w.isalpha()]
 
     print("lyrics Without stop words: ")
-    print(lyricsWithoutSW)
-    fdist = FreqDist(lyricsWithoutSW)
+    print(lyrics_without_punct)
+    fdist = FreqDist(lyrics_without_punct)
     print("How many times each word")
     print(fdist.keys())
     print(fdist.values())
     print("most words")
-    print(fdist.tabulate(10))
+    print(fdist.tabulate(20))
 
 
 if __name__ == '__main__':
-    main()
-    songList = songLyrics.get_lyrics_of_songs()
-    print("done")
+   # main()
+   lyrics = songLyrics.SongLyrics()
+   lyrics.get_lyrics_of_songs()
+   print("done")
