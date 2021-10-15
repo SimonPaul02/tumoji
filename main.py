@@ -1,4 +1,5 @@
 import nltk
+import songLyrics
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.tokenize import RegexpTokenizer
@@ -48,3 +49,5 @@ and the home of the brave?'''
 
 if __name__ == '__main__':
     main()
+    songList = songLyrics.get_lyrics_of_songs()
+    print("done")
