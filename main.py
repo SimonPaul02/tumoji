@@ -84,5 +84,6 @@ I need you to stay, need you to stay, hey'''
 if __name__ == '__main__':
    # main()
    lyrics = songLyrics.SongLyrics()
-   dict = lyrics.get_lyrics_of_songs()
+   lyrics.a()
+   #dict = lyrics.get_lyrics_of_songs()
    print("done")

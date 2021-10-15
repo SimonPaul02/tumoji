@@ -1,20 +1,17 @@
 from ytmusicapi import YTMusic
-import json
+import lyricsgenius as lg
 
 
 class SongLyrics():
     music = YTMusic()
     list_helper = []
 
+    genius = lg.Genius('Client_Access_Token_Goes_Here', skip_non_songs=True, excluded_terms=["(Remix)", "(Live)"],
+                       remove_section_headers=True)
 
-    def getSong(self, videoId: str, signatureTimestamp: int):
-        return YTMusic.get_song(videoId, signatureTimestamp=0)
-
-    def get_lyrics(self, browseId: str):
-        dict = self.music.get_lyrics(browseId)
-        return dict.get('lyrics').split()
-
-    def get_lyrics_of_songs(self):
+    def a(self):
+        song = self.genius.search_song('Griechischer Wein', 'Udo Jürgens')
+        print(song.lyrics)
 
         dict = self.music.get_playlist(playlistId="RDCLAK5uy_lxAYpcccslny9wyba5G3CWsBBbNcna_Xs", limit=100)
 
