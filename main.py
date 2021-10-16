@@ -1,9 +1,16 @@
+import codecs
+
 import nltk
+from urllib3.filepost import writer
+
 import songLyrics
 import gui
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import wordnet
+
+import numpy as np
+import csv
 
 
 # Sentiment Analysis
@@ -20,18 +27,23 @@ def main():
     good_mood_playlist = "RDCLAK5uy_kvmdYWgmu7MBsrWUzv53AyF02ytmE18bo"  # 😂
     sad_mood_playlist = "PLLIVqphyPGcWicpB3eXYDpXFY5KuuQs6_"  # ☹️
 
-
-
     lyrics = songLyrics.SongLyrics(good_mood_playlist)
     song_data_set = lyrics.get_lyrics_of_songs()
 
-    """
-    synonyms = []
-    for syn in wordnet.synsets("love"):
-        for l in syn.lemmas():
-            synonyms.append(l.name())
-    print(set(synonyms))
-   """
+    fields = ["Author", "Title", "Lyrics"]
+    # with codecs.open('goodMusicPlaylist.csv', 'w', encoding='UTF-8') as f:
+    ''' for row in song_data_set:
+         for x in row:
+             f.write(str(x) + ';')
+         f.write('\n')
+
+               
+         synonyms = []
+         for syn in wordnet.synsets("love"):
+             for l in syn.lemmas():
+                 synonyms.append(l.name())
+         print(set(synonyms))
+        '''
 
     lyrics = song_data_set[0][2]
 

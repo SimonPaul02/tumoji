@@ -1,21 +1,21 @@
-import PySimpleGUI as sg
+# importing only those functions
+# which are needed
+from tkinter import *
+from tkinter.ttk import *
 
-col = [[sg.Text('This is the first line')],
-       [sg.In()],
-       [sg.Button('Save'), sg.Button('😎')]]
+# creating tkinter window
+root = Tk()
 
-layout = [[sg.Column(col, key='-COLUMN-'), ]]  # put entire layout into a column so it can be saved
+# Adding widgets to the root window
+Label(root, text='GeeksforGeeks', font=(
+    'Verdana', 15)).pack(side=TOP, pady=10)
 
-window = sg.Window("Tumoji", layout, size=(750, 500), element_justification='c')
+# Creating a photoimage object to use image
+photo = PhotoImage(file="img/Screenshot (20).png")
 
-while True:
-    event, values = window.read()
-    if event in (sg.WIN_CLOSED, '😎'):
-        break  # exit
-    elif event == 'Save':
-        print("alfdkasdölf")
+# here, image option is used to
+# set image on button
+Button(root, text='Click Me !', image=photo).pack(side=TOP)
+Button(root, text='Click Me !', image=photo).pack(side=TOP)
 
-
-window.close()
-
-
+mainloop()

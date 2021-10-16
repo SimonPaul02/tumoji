@@ -42,6 +42,6 @@ class SongLyrics:
                 song_details.append(lyrics)
                 # putting together
                 self.final_list.append(song_details)
-                if len(self.final_list) == 10:
+                if len(self.final_list) == 3:
                     return self.final_list
         return self.final_list
