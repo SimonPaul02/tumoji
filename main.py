@@ -4,7 +4,7 @@ import nltk
 from urllib3.filepost import writer
 
 import songLyrics
-# import gui
+#import gui
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import wordnet
@@ -14,7 +14,6 @@ from nltk.stem import LancasterStemmer
 import numpy as np
 import csv
 import pandas as pd
-
 
 # Sentiment Analysis
 def is_positive(lyrics: str) -> bool:
@@ -40,6 +39,7 @@ def main():
              f.write(str(x) + ';')
          f.write('\n')
 
+               
          synonyms = []
          for syn in wordnet.synsets("love"):
              for l in syn.lemmas():
@@ -50,20 +50,20 @@ def main():
     vocal_tics = ['ooh']
     porter = PorterStemmer()
     print(len(song_data_set))
-    for x in range(0, len(song_data_set)):
+    for x in range(0,len(song_data_set)):
         song_author = song_data_set[x][0]
         song_name = song_data_set[x][1]
         song_lyrics = song_data_set[x][2]
 
-        df = pd.DataFrame(song_data_set, columns=['song_author', 'song_name', 'song_lyrics'])
-        df['song_lyrics'] = df['song_lyrics'].str.replace('\n', ' nl ')
+        df = pd.DataFrame(song_data_set, columns = ['song_author','song_name','song_lyrics'])
+        df['song_lyrics'] = df['song_lyrics'].str.replace('\n',' nl ')
         print(df)
         # saving the DataFrame as a CSV file
-        gfg_csv_data = df.to_csv('GfG.csv', index=True)
+        gfg_csv_data = df.to_csv('GfG.csv', index = True)
         print('\nCSV String:\n', gfg_csv_data)
 
         song_lyrics_array = []
-        # print(song_lyrics.split())
+        #print(song_lyrics.split())
         stopwords = nltk.corpus.stopwords.words("english")
         tokens = nltk.word_tokenize(song_lyrics)
 
