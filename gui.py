@@ -39,15 +39,15 @@ def run(text_variable):
     firstLetter = text[0:1]
     text_variable.set("AI is looking for songs...")
     out = ""
-    if firstLetter == "0":
+    if firstLetter == "1":
         out = main.main(sad_mood_playlist)
-    elif firstLetter == "1":
-        out = main.main(good_mood_playlist)
     elif firstLetter == "2":
-        out = main.main(party_playlist)
+        out = main.main(good_mood_playlist)
     elif firstLetter == "3":
-        out = main.main(study_playlist)
+        out = main.main(party_playlist)
     elif firstLetter == "4":
+        out = main.main(study_playlist)
+    elif firstLetter == "5":
         out = main.main(relax_playlist)
     else:
         out =main.main(romance_playlist)

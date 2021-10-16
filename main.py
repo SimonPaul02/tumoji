@@ -77,7 +77,7 @@ def main(playlist):
         # print("song_tokens: " + ''.join(tokens))
         print("most words")
         print(fdist.tabulate(5))
-        r = random.randint(0, 9)
+        r = random.randint(0, len(song_data_set)-1)
         out = (song_data_set[r][1] + (" by ") + (song_data_set[r][0]))
         return out
 
