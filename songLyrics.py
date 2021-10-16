@@ -2,7 +2,7 @@ from ytmusicapi import YTMusic
 import lyricsgenius as lg
 
 
-class SongLyrics():
+class SongLyrics:
     music = YTMusic()
     final_list = []
 
@@ -11,7 +11,7 @@ class SongLyrics():
 
     def get_lyrics_from_genius(self, title, author):
         song = self.genius.search_song(artist=author, title=title)
-        if (song == None):
+        if song == None:
             return []
         return song.lyrics.lower()
 

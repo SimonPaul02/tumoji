@@ -17,11 +17,9 @@ def main():
 
     """
     synonyms = []
-
     for syn in wordnet.synsets("love"):
         for l in syn.lemmas():
             synonyms.append(l.name())
-
     print(set(synonyms))
    """
 
