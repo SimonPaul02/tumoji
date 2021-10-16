@@ -14,14 +14,24 @@ class SongLyrics:
                        remove_section_headers=True)
 
     def get_lyrics_from_genius(self, title, author):
-        song = self.genius.search_song(artist=author, title=title)
+        try:
+            song = self.genius.search_song(artist=author, title=title)
+        except:
+            return []
+
         if song == None:
             return []
         return song.lyrics.lower()
 
     def get_lyrics_of_songs(self):
+        playlist = ""
+        while True:
+            try:
+                playlist = self.music.get_playlist(playlistId=self.playlist, limit=4)
+                break
+            except:
+                print("connection error, trying again")
 
-        playlist = self.music.get_playlist(playlistId=self.playlist, limit=4)
         tracks = playlist.get('tracks')
         for track in tracks:
             title = ""

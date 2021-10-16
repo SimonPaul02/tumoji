@@ -1,4 +1,5 @@
 import codecs
+import random
 
 import nltk
 from urllib3.filepost import writer
@@ -23,15 +24,8 @@ def is_positive(lyrics: str) -> bool:
 
 
 # Main
-def main():
-    study_playlist = "RDCLAK5uy_nZJzoZEBYRptA2XXskbxGTvKkevapT_F4"  # 📕
-    party_playlist = "RDCLAK5uy_n4PuqfjXs63tz7E3lEs2av_rSBmuJqf-k"  # 🍾
-    relax_playlist = "RDCLAK5uy_mdwsZFtQhJyGQPuQA612VoRPXp-OJfzx8"  # 😎
-    romance_playlist = "RDCLAK5uy_l1oO11DBO4FD8U7bOrqUKK5Y_PkISUMQM"  # ❤️
-    good_mood_playlist = "RDCLAK5uy_kvmdYWgmu7MBsrWUzv53AyF02ytmE18bo"  # 😂
-    sad_mood_playlist = "PLLIVqphyPGcWicpB3eXYDpXFY5KuuQs6_"  # ☹️
-
-    lyrics = songLyrics.SongLyrics(good_mood_playlist)
+def main(playlist):
+    lyrics = songLyrics.SongLyrics(playlist)
     song_data_set = lyrics.get_lyrics_of_songs()
 
     fields = ["Author", "Title", "Lyrics"]
@@ -83,6 +77,9 @@ def main():
         # print("song_tokens: " + ''.join(tokens))
         print("most words")
         print(fdist.tabulate(5))
+        r = random.randint(0, 9)
+        out = (song_data_set[r][1] + (" by ") + (song_data_set[r][0]))
+        return out
 
 
 if __name__ == '__main__':
