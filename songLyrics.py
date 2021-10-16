@@ -13,7 +13,7 @@ class SongLyrics():
         song = self.genius.search_song(artist=author, title=title)
         if (song == None):
             return []
-        return song.lyrics.split()
+        return song.lyrics.lower()
 
     def get_lyrics_of_songs(self):
 
@@ -36,11 +36,12 @@ class SongLyrics():
                 lyrics = self.get_lyrics_from_genius(title[0:index], author)
             else:
                 lyrics = self.get_lyrics_from_genius(title, author)
-            if not lyrics == [] and lyrics != None:
+            if not lyrics == [] and lyrics is not None:
                 song_details.append(author)
                 song_details.append(title)
                 song_details.append(lyrics)
                 # putting together
                 self.final_list.append(song_details)
-
+                if len(self.final_list) == 10:
+                    return self.final_list
         return self.final_list
