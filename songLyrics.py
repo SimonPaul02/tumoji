@@ -17,7 +17,7 @@ class SongLyrics:
 
     def get_lyrics_of_songs(self):
 
-        playlist = self.music.get_playlist(playlistId="RDCLAK5uy_lxAYpcccslny9wyba5G3CWsBBbNcna_Xs", limit=4)
+        playlist = self.music.get_playlist(playlistId=self.playlist, limit=4)
         tracks = playlist.get('tracks')
         for track in tracks:
             title = ""
