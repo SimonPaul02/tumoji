@@ -17,12 +17,13 @@ bottle = PhotoImage(file=r"../../Desktop/tumoji/img/bottle.png")
 books = PhotoImage(file=r"../../Desktop/tumoji/img/books.png")
 sunglasses = PhotoImage(file=r"../../Desktop/tumoji/img/sunglasses.png")
 
-#images on canvas
+# images on canvas
+global a
+
 
 # Function of Button
 def find_and_display():
-    print("Jesus Christl")
-
+    print("Jesuuuuuuuuuuus")
 
 
 # Define a function to update the entry widget
@@ -38,12 +39,12 @@ entry.pack(pady=60)
 # Create Multiple Buttons with different commands
 button_dict = {}
 option = ["Python", "Java", "Go", "C++"]
-Button(win, text='Porsche', image=sadface, height=130, width=130, command=find_and_display).place(x=75,y=150)
-Button(win, text='Porsche', image=smiley, height=130, width=130, command=find_and_display).place(x=375,y=150)
-Button(win, text='Porsche', image=bottle, height=130, width=130, command=find_and_display).place(x=675,y=150)
-Button(win, text='Porsche', image=books, height=130, width=130, command=find_and_display).place(x=975,y=150)
-Button(win, text='Porsche', image=sunglasses, height=130, width=130, command=find_and_display).place(x=1275,y=150)
-
+Button(win, text='Porsche', image=sadface, height=130, width=130, command=find_and_display).place(x=75, y=150)
+Button(win, text='Porsche', image=smiley, height=130, width=130, command=find_and_display).place(x=375, y=150)
+Button(win, text='Porsche', image=bottle, height=130, width=130, command=find_and_display).place(x=675, y=150)
+Button(win, text='Porsche', image=books, height=130, width=130, command=find_and_display).place(x=975, y=150)
+Button(win, text='Porsche', image=sunglasses, height=130, width=130, command=find_and_display).place(x=1275, y=150)
+Button(win, text="Write comma-seperated numbers from 1-5 (that represent the emojis) into the textfield and continue here", height=10, width=80).place(x=400, y=400)
 
 '''for i in option:
     def func(x=i):

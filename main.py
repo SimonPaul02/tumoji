@@ -14,6 +14,7 @@ from nltk.stem import LancasterStemmer
 import numpy as np
 import csv
 import pandas as pd
+import gui
 
 
 # Sentiment Analysis
@@ -85,5 +86,6 @@ def main():
 
 
 if __name__ == '__main__':
+    gui.mainloop()
     main()
     print("done")
