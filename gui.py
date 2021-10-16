@@ -11,11 +11,11 @@ label = Label(win, image=background_image)
 label.place(x=0, y=0)
 
 # Button
-sadface = PhotoImage(file=r"img/sadface.png")
-smiley = PhotoImage(file=r"img/smiley.png")
-bottle = PhotoImage(file=r"img/bottle.png")
-books = PhotoImage(file=r"img/books.png")
-sunglasses = PhotoImage(file=r"img/sunglasses.png")
+sadface = PhotoImage(file=r"../../Desktop/tumoji/img/sadface.png")
+smiley = PhotoImage(file=r"../../Desktop/tumoji/img/smiley.png")
+bottle = PhotoImage(file=r"../../Desktop/tumoji/img/bottle.png")
+books = PhotoImage(file=r"../../Desktop/tumoji/img/books.png")
+sunglasses = PhotoImage(file=r"../../Desktop/tumoji/img/sunglasses.png")
 
 #images on canvas
 
