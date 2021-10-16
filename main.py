@@ -4,13 +4,16 @@ import nltk
 from urllib3.filepost import writer
 
 import songLyrics
-import gui
+# import gui
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import wordnet
+from nltk.stem import PorterStemmer
+from nltk.stem import LancasterStemmer
 
 import numpy as np
 import csv
+import pandas as pd
 
 
 # Sentiment Analysis
@@ -37,7 +40,6 @@ def main():
              f.write(str(x) + ';')
          f.write('\n')
 
-               
          synonyms = []
          for syn in wordnet.synsets("love"):
              for l in syn.lemmas():
@@ -45,18 +47,40 @@ def main():
          print(set(synonyms))
         '''
 
-    lyrics = song_data_set[0][2]
+    vocal_tics = ['ooh']
+    porter = PorterStemmer()
+    print(len(song_data_set))
+    for x in range(0, len(song_data_set)):
+        song_author = song_data_set[x][0]
+        song_name = song_data_set[x][1]
+        song_lyrics = song_data_set[x][2]
 
-    stopwords = nltk.corpus.stopwords.words("english")
-    tokens = nltk.word_tokenize(lyrics)
+        df = pd.DataFrame(song_data_set, columns=['song_author', 'song_name', 'song_lyrics'])
+        df['song_lyrics'] = df['song_lyrics'].str.replace('\n', ' nl ')
+        print(df)
+        # saving the DataFrame as a CSV file
+        gfg_csv_data = df.to_csv('GfG.csv', index=True)
+        print('\nCSV String:\n', gfg_csv_data)
 
-    lyrics_without_sw = [w for w in tokens if not w.lower() in stopwords]
-    lyrics_without_punct = [w for w in lyrics_without_sw if w.isalpha()]
+        song_lyrics_array = []
+        # print(song_lyrics.split())
+        stopwords = nltk.corpus.stopwords.words("english")
+        tokens = nltk.word_tokenize(song_lyrics)
 
-    fdist = FreqDist(lyrics_without_punct)
+        lyrics_without_sw = [w for w in tokens if not w.lower() in stopwords]
+        lyrics_without_punct = [w for w in lyrics_without_sw if w.isalpha()]
+        lyrics_without_vt = [w for w in lyrics_without_punct if not w in vocal_tics]
 
-    print("most words")
-    print(fdist.tabulate(20))
+        lyrics_stemmed = [porter.stem(word) for word in lyrics_without_vt]
+        fdist = FreqDist(lyrics_stemmed)
+
+        # print("song_name: " + song_name)
+        # print("song_author: " + song_author)
+        # print("song_lyrics: " + song_lyrics)
+        # print(tokens)
+        # print("song_tokens: " + ''.join(tokens))
+        print("most words")
+        print(fdist.tabulate(5))
 
 
 if __name__ == '__main__':
