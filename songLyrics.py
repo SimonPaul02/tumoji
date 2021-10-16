@@ -3,6 +3,10 @@ import lyricsgenius as lg
 
 
 class SongLyrics:
+
+    def __init__(self, playlist):
+        self.playlist = playlist
+
     music = YTMusic()
     final_list = []
 
